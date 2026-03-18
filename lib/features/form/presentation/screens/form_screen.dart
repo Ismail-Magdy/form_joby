@@ -42,6 +42,8 @@ class _FormViewState extends State<FormView> {
   final _linkedinController = TextEditingController();
   final _githubController = TextEditingController();
 
+  bool _obscurePassword = true;
+
   String? _selectedLevel;
   String? _selectedWorkType;
 
@@ -52,7 +54,7 @@ class _FormViewState extends State<FormView> {
   String? _avatarFileName;
 
   final List<String> _levels = ['Junior', 'Mid-Level', 'Senior', 'Tech Lead'];
-  final List<String> _workTypes = ['Onsite', 'Remote', 'Part-time', 'Full-time'];
+  final List<String> _workTypes = ['Onsite', 'Remote'];
 
   Future<void> _pickCV() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -224,8 +226,19 @@ class _FormViewState extends State<FormView> {
                             label: 'Password',
                             hint: 'Create a password (min 6 chars)',
                             controller: _passwordController,
-                            isPassword: true,
+                            isPassword: _obscurePassword,
                             validator: Validators.password,
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                                color: AppTheme.textLight,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _obscurePassword = !_obscurePassword;
+                                });
+                              },
+                            ),
                           ),
                           const SizedBox(height: 16),
                           Row(
