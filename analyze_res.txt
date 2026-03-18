@@ -1,0 +1,22 @@
+Analyzing form...                                               
+
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\core\widgets\custom_dropdown.dart:37:11 - deprecated_member_use
+  error - Target of URI doesn't exist: 'seeker_model.dart' - lib\features\form\data\repositories\form_repository.dart:3:8 - uri_does_not_exist
+   info - Unnecessary use of string interpolation - lib\features\form\data\repositories\form_repository.dart:27:18 - unnecessary_string_interpolations
+   info - Unnecessary use of string interpolation - lib\features\form\data\repositories\form_repository.dart:40:18 - unnecessary_string_interpolations
+  error - Undefined class 'SeekerModel' - lib\features\form\data\repositories\form_repository.dart:62:33 - undefined_class
+warning - The value of the local variable 'avatarUrl' isn't used - lib\features\form\manager\form_cubit.dart:38:15 - unused_local_variable
+  error - The name 'FormState' is defined in the libraries 'package:flutter/src/widgets/form.dart (via package:flutter/material.dart)' and 'package:form/features/form/manager/form_state.dart' - lib\features\form\presentation\screens\form_screen.dart:34:30 - ambiguous_import
+  error - The name 'FormState' isn't a type, so it can't be used as a type argument - lib\features\form\presentation\screens\form_screen.dart:134:37 - non_type_as_type_argument
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\form\presentation\screens\form_screen.dart:176:47 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\form\presentation\screens\form_screen.dart:329:39 - deprecated_member_use
+  error - Target of URI doesn't exist: '../../core/theme/app_theme.dart' - lib\features\form\presentation\widgets\file_upload_button.dart:3:8 - uri_does_not_exist
+  error - Undefined name 'AppTheme' - lib\features\form\presentation\widgets\file_upload_button.dart:28:39 - undefined_identifier
+  error - Undefined name 'AppTheme' - lib\features\form\presentation\widgets\file_upload_button.dart:32:18 - undefined_identifier
+  error - Undefined name 'AppTheme' - lib\features\form\presentation\widgets\file_upload_button.dart:38:41 - undefined_identifier
+  error - Undefined name 'AppTheme' - lib\features\form\presentation\widgets\file_upload_button.dart:38:64 - undefined_identifier
+  error - Undefined name 'AppTheme' - lib\features\form\presentation\widgets\file_upload_button.dart:48:30 - undefined_identifier
+  error - The class 'EdgeInsets' doesn't have a constant constructor 'top' - lib\features\form\presentation\widgets\file_upload_button.dart:54:49 - const_with_undefined_constructor
+  error - Invalid constant value - lib\features\form\presentation\widgets\file_upload_button.dart:58:34 - invalid_constant
+  error - Undefined name 'AppTheme' - lib\features\form\presentation\widgets\file_upload_button.dart:58:34 - undefined_identifier
+

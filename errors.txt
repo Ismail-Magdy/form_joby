@@ -1,0 +1,19 @@
+ERROR|COMPILE_TIME_ERROR|URI_DOES_NOT_EXIST|E:\\BUSINUSS\\form\\lib\\features\\form\\data\\repositories\\form_repository.dart|3|8|19|Target of URI doesn't exist: 'seeker_model.dart'.
+ERROR|COMPILE_TIME_ERROR|UNDEFINED_CLASS|E:\\BUSINUSS\\form\\lib\\features\\form\\data\\repositories\\form_repository.dart|62|33|11|Undefined class 'SeekerModel'.
+ERROR|COMPILE_TIME_ERROR|AMBIGUOUS_IMPORT|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\screens\\form_screen.dart|34|30|9|The name 'FormState' is defined in the libraries 'package:flutter/src/widgets/form.dart (via package:flutter/material.dart)' and 'package:form/features/form/manager/form_state.dart'.
+ERROR|COMPILE_TIME_ERROR|NON_TYPE_AS_TYPE_ARGUMENT|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\screens\\form_screen.dart|134|37|20|The name 'FormState' isn't a type, so it can't be used as a type argument.
+ERROR|COMPILE_TIME_ERROR|URI_DOES_NOT_EXIST|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|3|8|33|Target of URI doesn't exist: '../../core/theme/app_theme.dart'.
+ERROR|COMPILE_TIME_ERROR|UNDEFINED_IDENTIFIER|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|28|39|8|Undefined name 'AppTheme'.
+ERROR|COMPILE_TIME_ERROR|UNDEFINED_IDENTIFIER|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|32|18|8|Undefined name 'AppTheme'.
+ERROR|COMPILE_TIME_ERROR|UNDEFINED_IDENTIFIER|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|38|41|8|Undefined name 'AppTheme'.
+ERROR|COMPILE_TIME_ERROR|UNDEFINED_IDENTIFIER|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|38|64|8|Undefined name 'AppTheme'.
+ERROR|COMPILE_TIME_ERROR|UNDEFINED_IDENTIFIER|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|48|30|8|Undefined name 'AppTheme'.
+ERROR|COMPILE_TIME_ERROR|CONST_WITH_UNDEFINED_CONSTRUCTOR|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|54|49|3|The class 'EdgeInsets' doesn't have a constant constructor 'top'.
+ERROR|COMPILE_TIME_ERROR|INVALID_CONSTANT|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|58|34|8|Invalid constant value.
+ERROR|COMPILE_TIME_ERROR|UNDEFINED_IDENTIFIER|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\widgets\\file_upload_button.dart|58|34|8|Undefined name 'AppTheme'.
+WARNING|STATIC_WARNING|UNUSED_LOCAL_VARIABLE|E:\\BUSINUSS\\form\\lib\\features\\form\\manager\\form_cubit.dart|38|15|9|The value of the local variable 'avatarUrl' isn't used.
+INFO|HINT|DEPRECATED_MEMBER_USE|E:\\BUSINUSS\\form\\lib\\core\\widgets\\custom_dropdown.dart|37|11|5|'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre.
+INFO|LINT|UNNECESSARY_STRING_INTERPOLATIONS|E:\\BUSINUSS\\form\\lib\\features\\form\\data\\repositories\\form_repository.dart|27|18|11|Unnecessary use of string interpolation.
+INFO|LINT|UNNECESSARY_STRING_INTERPOLATIONS|E:\\BUSINUSS\\form\\lib\\features\\form\\data\\repositories\\form_repository.dart|40|18|11|Unnecessary use of string interpolation.
+INFO|HINT|DEPRECATED_MEMBER_USE|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\screens\\form_screen.dart|176|47|11|'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss.
+INFO|HINT|DEPRECATED_MEMBER_USE|E:\\BUSINUSS\\form\\lib\\features\\form\\presentation\\screens\\form_screen.dart|329|39|11|'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss.
