@@ -8,6 +8,7 @@ class CustomDropdown extends StatelessWidget {
   final String? value;
   final void Function(String?) onChanged;
   final String? Function(String?)? validator;
+  final Widget? prefixIcon;
 
   const CustomDropdown({
     super.key,
@@ -17,6 +18,7 @@ class CustomDropdown extends StatelessWidget {
     required this.value,
     required this.onChanged,
     this.validator,
+    this.prefixIcon,
   });
 
   @override
@@ -40,6 +42,7 @@ class CustomDropdown extends StatelessWidget {
           icon: const Icon(Icons.keyboard_arrow_down, color: AppTheme.textLight),
           decoration: InputDecoration(
             hintText: hint,
+            prefixIcon: prefixIcon,
           ),
           items: items.map((String item) {
             return DropdownMenuItem<String>(

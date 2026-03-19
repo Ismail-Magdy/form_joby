@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const Color primaryBlue = Color(0xFF0A66C2); // LinkedIn-ish modern blue
@@ -12,7 +13,7 @@ class AppTheme {
     return ThemeData(
       primaryColor: primaryBlue,
       scaffoldBackgroundColor: background,
-      fontFamily: 'Roboto', // Modern sans-serif default
+      textTheme: GoogleFonts.poppinsTextTheme(),
       appBarTheme: const AppBarTheme(
         backgroundColor: white,
         elevation: 0,

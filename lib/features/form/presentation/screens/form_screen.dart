@@ -7,6 +7,8 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/helpers/validators.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 import '../../../../core/widgets/custom_dropdown.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../../core/widgets/custom_autocomplete.dart';
 import '../../manager/form_cubit.dart';
 import '../../manager/form_state.dart' as manager_state;
 import '../widgets/file_upload_button.dart';
@@ -55,6 +57,25 @@ class _FormViewState extends State<FormView> {
 
   final List<String> _levels = ['Junior', 'Mid-Level', 'Senior', 'Tech Lead'];
   final List<String> _workTypes = ['Onsite', 'Remote'];
+
+  final List<String> _jobCategories = [
+    'Software Engineering',
+    'UI/UX Design',
+    'Marketing',
+    'Data Science',
+    'Quality Assurance',
+    'Product Management'
+  ];
+
+  final List<String> _jobTitles = [
+    'Flutter Developer',
+    'Backend Developer',
+    'Frontend Developer',
+    'Full Stack Developer',
+    'Android Developer',
+    'iOS Developer',
+    'UI/UX Designer'
+  ];
 
   Future<void> _pickCV() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -168,21 +189,17 @@ class _FormViewState extends State<FormView> {
               Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(24.0),
-                  child: Container(
-                    constraints: const BoxConstraints(maxWidth: 600),
-                    decoration: BoxDecoration(
-                      color: AppTheme.white,
+                  child: Card(
+                    elevation: 8,
+                    shadowColor: Colors.black.withValues(alpha: 0.1),
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.05),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        )
-                      ],
                     ),
-                    padding: const EdgeInsets.all(32),
-                    child: Form(
+                    color: AppTheme.white,
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 600),
+                      padding: const EdgeInsets.all(40),
+                      child: Form(
                       key: _formKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -211,6 +228,7 @@ class _FormViewState extends State<FormView> {
                             label: 'Full Name',
                             hint: 'Enter your full name',
                             controller: _nameController,
+                            prefixIcon: const FaIcon(FontAwesomeIcons.solidUser, size: 18, color: AppTheme.textLight),
                             validator: (val) => Validators.requiredField(val, 'Full Name'),
                           ),
                           const SizedBox(height: 16),
@@ -219,6 +237,7 @@ class _FormViewState extends State<FormView> {
                             hint: 'Enter your email address',
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
+                            prefixIcon: const FaIcon(FontAwesomeIcons.solidEnvelope, size: 18, color: AppTheme.textLight),
                             validator: Validators.email,
                           ),
                           const SizedBox(height: 16),
@@ -227,6 +246,7 @@ class _FormViewState extends State<FormView> {
                             hint: 'Create a password (min 6 chars)',
                             controller: _passwordController,
                             isPassword: _obscurePassword,
+                            prefixIcon: const FaIcon(FontAwesomeIcons.lock, size: 18, color: AppTheme.textLight),
                             validator: Validators.password,
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -244,19 +264,23 @@ class _FormViewState extends State<FormView> {
                           Row(
                             children: [
                               Expanded(
-                                child: CustomTextField(
+                                child: CustomAutocomplete(
                                   label: 'Job Category',
                                   hint: 'e.g. Engineering',
+                                  options: _jobCategories,
                                   controller: _jobCategoryController,
+                                  prefixIcon: const FaIcon(FontAwesomeIcons.briefcase, size: 18, color: AppTheme.textLight),
                                   validator: (val) => Validators.requiredField(val, 'Job Category'),
                                 ),
                               ),
                               const SizedBox(width: 16),
                               Expanded(
-                                child: CustomTextField(
+                                child: CustomAutocomplete(
                                   label: 'Job Title',
                                   hint: 'e.g. Flutter Dev',
+                                  options: _jobTitles,
                                   controller: _jobTitleController,
+                                  prefixIcon: const FaIcon(FontAwesomeIcons.userTie, size: 18, color: AppTheme.textLight),
                                   validator: (val) => Validators.requiredField(val, 'Job Title'),
                                 ),
                               ),
@@ -271,6 +295,7 @@ class _FormViewState extends State<FormView> {
                                   hint: 'Select Level',
                                   items: _levels,
                                   value: _selectedLevel,
+                                  prefixIcon: const FaIcon(FontAwesomeIcons.layerGroup, size: 18, color: AppTheme.textLight),
                                   onChanged: (val) => setState(() => _selectedLevel = val),
                                   validator: (val) => Validators.requiredField(val, 'Level'),
                                 ),
@@ -282,6 +307,7 @@ class _FormViewState extends State<FormView> {
                                   hint: 'Select Type',
                                   items: _workTypes,
                                   value: _selectedWorkType,
+                                  prefixIcon: const FaIcon(FontAwesomeIcons.buildingUser, size: 18, color: AppTheme.textLight),
                                   onChanged: (val) => setState(() => _selectedWorkType = val),
                                   validator: (val) => Validators.requiredField(val, 'Work Type'),
                                 ),
@@ -294,6 +320,7 @@ class _FormViewState extends State<FormView> {
                             hint: 'e.g. +1234567890',
                             controller: _whatsappController,
                             keyboardType: TextInputType.phone,
+                            prefixIcon: const FaIcon(FontAwesomeIcons.whatsapp, size: 18, color: AppTheme.textLight),
                             validator: Validators.phone,
                           ),
                           const SizedBox(height: 16),
@@ -302,6 +329,7 @@ class _FormViewState extends State<FormView> {
                             hint: 'https://linkedin.com/in/...',
                             controller: _linkedinController,
                             keyboardType: TextInputType.url,
+                            prefixIcon: const FaIcon(FontAwesomeIcons.linkedin, size: 18, color: AppTheme.textLight),
                             validator: (val) => Validators.url(val, 'LinkedIn'),
                           ),
                           const SizedBox(height: 16),
@@ -310,6 +338,7 @@ class _FormViewState extends State<FormView> {
                             hint: 'https://github.com/...',
                             controller: _githubController,
                             keyboardType: TextInputType.url,
+                            prefixIcon: const FaIcon(FontAwesomeIcons.github, size: 18, color: AppTheme.textLight),
                             validator: (val) => Validators.url(val, 'GitHub'),
                           ),
                           const SizedBox(height: 24),
@@ -328,8 +357,14 @@ class _FormViewState extends State<FormView> {
                           ),
                           const SizedBox(height: 32),
                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
                             onPressed: state is manager_state.FormLoading ? null : _submit,
-                            child: const Text('Submit & Register'),
+                            child: const Text('Submit & Register', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                           ),
                         ],
                       ),
@@ -337,7 +372,8 @@ class _FormViewState extends State<FormView> {
                   ),
                 ),
               ),
-              if (state is manager_state.FormLoading)
+            ),
+            if (state is manager_state.FormLoading)
                 Container(
                   color: Colors.black.withValues(alpha: 0.3),
                   child: const Center(
