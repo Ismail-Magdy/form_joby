@@ -7,7 +7,6 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/helpers/validators.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 import '../../../../core/widgets/custom_dropdown.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/widgets/custom_autocomplete.dart';
 import '../../manager/form_cubit.dart';
 import '../../manager/form_state.dart' as manager_state;
@@ -64,7 +63,7 @@ class _FormViewState extends State<FormView> {
     'Marketing',
     'Data Science',
     'Quality Assurance',
-    'Product Management'
+    'Product Management',
   ];
 
   final List<String> _jobTitles = [
@@ -74,7 +73,7 @@ class _FormViewState extends State<FormView> {
     'Full Stack Developer',
     'Android Developer',
     'iOS Developer',
-    'UI/UX Designer'
+    'UI/UX Designer',
   ];
 
   Future<void> _pickCV() async {
@@ -116,21 +115,21 @@ class _FormViewState extends State<FormView> {
       }
 
       context.read<FormCubit>().submitForm(
-            fullName: _nameController.text.trim(),
-            email: _emailController.text.trim(),
-            password: _passwordController.text.trim(),
-            jobCategory: _jobCategoryController.text.trim(),
-            jobTitle: _jobTitleController.text.trim(),
-            level: _selectedLevel ?? '',
-            workType: _selectedWorkType ?? '',
-            whatsapp: _whatsappController.text.trim(),
-            linkedin: _linkedinController.text.trim(),
-            github: _githubController.text.trim(),
-            cvBytes: _cvBytes,
-            cvFileName: _cvFileName,
-            avatarBytes: _avatarBytes,
-            avatarFileName: _avatarFileName,
-          );
+        fullName: _nameController.text.trim(),
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+        jobCategory: _jobCategoryController.text.trim(),
+        jobTitle: _jobTitleController.text.trim(),
+        level: _selectedLevel ?? '',
+        workType: _selectedWorkType ?? '',
+        whatsapp: _whatsappController.text.trim(),
+        linkedin: _linkedinController.text.trim(),
+        github: _githubController.text.trim(),
+        cvBytes: _cvBytes,
+        cvFileName: _cvFileName,
+        avatarBytes: _avatarBytes,
+        avatarFileName: _avatarFileName,
+      );
     }
   }
 
@@ -150,10 +149,7 @@ class _FormViewState extends State<FormView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Joby Early Access'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Joby Early Access'), centerTitle: true),
       body: BlocConsumer<FormCubit, manager_state.FormState>(
         listener: (context, state) {
           if (state is manager_state.FormSuccess) {
@@ -162,7 +158,9 @@ class _FormViewState extends State<FormView> {
               barrierDismissible: false,
               builder: (context) => AlertDialog(
                 title: const Text('Success!'),
-                content: const Text('Your profile has been created successfully.'),
+                content: const Text(
+                  'Your profile has been created successfully.',
+                ),
                 actions: [
                   TextButton(
                     onPressed: () {
@@ -200,180 +198,208 @@ class _FormViewState extends State<FormView> {
                       constraints: const BoxConstraints(maxWidth: 600),
                       padding: const EdgeInsets.all(40),
                       child: Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            'Join Joby',
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: AppTheme.textDark,
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              'Join Joby',
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: AppTheme.textDark,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            'Fill in your details below to get early access.',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: AppTheme.textLight,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 32),
-                          CustomTextField(
-                            label: 'Full Name',
-                            hint: 'Enter your full name',
-                            controller: _nameController,
-                            prefixIcon: const FaIcon(FontAwesomeIcons.solidUser, size: 18, color: AppTheme.textLight),
-                            validator: (val) => Validators.requiredField(val, 'Full Name'),
-                          ),
-                          const SizedBox(height: 16),
-                          CustomTextField(
-                            label: 'Email',
-                            hint: 'Enter your email address',
-                            controller: _emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            prefixIcon: const FaIcon(FontAwesomeIcons.solidEnvelope, size: 18, color: AppTheme.textLight),
-                            validator: Validators.email,
-                          ),
-                          const SizedBox(height: 16),
-                          CustomTextField(
-                            label: 'Password',
-                            hint: 'Create a password (min 6 chars)',
-                            controller: _passwordController,
-                            isPassword: _obscurePassword,
-                            prefixIcon: const FaIcon(FontAwesomeIcons.lock, size: 18, color: AppTheme.textLight),
-                            validator: Validators.password,
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Fill in your details below to get early access.',
+                              style: TextStyle(
+                                fontSize: 16,
                                 color: AppTheme.textLight,
                               ),
-                              onPressed: () {
-                                setState(() {
-                                  _obscurePassword = !_obscurePassword;
-                                });
-                              },
+                              textAlign: TextAlign.center,
                             ),
-                          ),
-                          const SizedBox(height: 16),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomAutocomplete(
-                                  label: 'Job Category',
-                                  hint: 'e.g. Engineering',
-                                  options: _jobCategories,
-                                  controller: _jobCategoryController,
-                                  prefixIcon: const FaIcon(FontAwesomeIcons.briefcase, size: 18, color: AppTheme.textLight),
-                                  validator: (val) => Validators.requiredField(val, 'Job Category'),
+                            const SizedBox(height: 32),
+                            CustomTextField(
+                              label: 'Full Name',
+                              hint: 'Enter your full name',
+                              controller: _nameController,
+                              validator: (val) =>
+                                  Validators.requiredField(val, 'Full Name'),
+                            ),
+                            const SizedBox(height: 16),
+                            CustomTextField(
+                              label: 'Email',
+                              hint: 'Enter your email address',
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+
+                              validator: Validators.email,
+                            ),
+                            const SizedBox(height: 16),
+                            CustomTextField(
+                              label: 'Password',
+                              hint: 'Create a password (min 6 chars)',
+                              controller: _passwordController,
+                              isPassword: _obscurePassword,
+
+                              validator: Validators.password,
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscurePassword
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: AppTheme.textLight,
                                 ),
-                              ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: CustomAutocomplete(
-                                  label: 'Job Title',
-                                  hint: 'e.g. Flutter Dev',
-                                  options: _jobTitles,
-                                  controller: _jobTitleController,
-                                  prefixIcon: const FaIcon(FontAwesomeIcons.userTie, size: 18, color: AppTheme.textLight),
-                                  validator: (val) => Validators.requiredField(val, 'Job Title'),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 16),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomDropdown(
-                                  label: 'Level',
-                                  hint: 'Select Level',
-                                  items: _levels,
-                                  value: _selectedLevel,
-                                  prefixIcon: const FaIcon(FontAwesomeIcons.layerGroup, size: 18, color: AppTheme.textLight),
-                                  onChanged: (val) => setState(() => _selectedLevel = val),
-                                  validator: (val) => Validators.requiredField(val, 'Level'),
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: CustomDropdown(
-                                  label: 'Work Type',
-                                  hint: 'Select Type',
-                                  items: _workTypes,
-                                  value: _selectedWorkType,
-                                  prefixIcon: const FaIcon(FontAwesomeIcons.buildingUser, size: 18, color: AppTheme.textLight),
-                                  onChanged: (val) => setState(() => _selectedWorkType = val),
-                                  validator: (val) => Validators.requiredField(val, 'Work Type'),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 16),
-                          CustomTextField(
-                            label: 'WhatsApp Number',
-                            hint: 'e.g. +1234567890',
-                            controller: _whatsappController,
-                            keyboardType: TextInputType.phone,
-                            prefixIcon: const FaIcon(FontAwesomeIcons.whatsapp, size: 18, color: AppTheme.textLight),
-                            validator: Validators.phone,
-                          ),
-                          const SizedBox(height: 16),
-                          CustomTextField(
-                            label: 'LinkedIn Profile',
-                            hint: 'https://linkedin.com/in/...',
-                            controller: _linkedinController,
-                            keyboardType: TextInputType.url,
-                            prefixIcon: const FaIcon(FontAwesomeIcons.linkedin, size: 18, color: AppTheme.textLight),
-                            validator: (val) => Validators.url(val, 'LinkedIn'),
-                          ),
-                          const SizedBox(height: 16),
-                          CustomTextField(
-                            label: 'GitHub Profile',
-                            hint: 'https://github.com/...',
-                            controller: _githubController,
-                            keyboardType: TextInputType.url,
-                            prefixIcon: const FaIcon(FontAwesomeIcons.github, size: 18, color: AppTheme.textLight),
-                            validator: (val) => Validators.url(val, 'GitHub'),
-                          ),
-                          const SizedBox(height: 24),
-                          FileUploadButton(
-                            title: 'Upload Profile Picture (Optional)',
-                            fileName: _avatarFileName,
-                            icon: Icons.image,
-                            onTap: _pickAvatar,
-                          ),
-                          const SizedBox(height: 16),
-                          FileUploadButton(
-                            title: 'Upload CV (PDF) *',
-                            fileName: _cvFileName,
-                            icon: Icons.picture_as_pdf,
-                            onTap: _pickCV,
-                          ),
-                          const SizedBox(height: 32),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscurePassword = !_obscurePassword;
+                                  });
+                                },
                               ),
                             ),
-                            onPressed: state is manager_state.FormLoading ? null : _submit,
-                            child: const Text('Submit & Register', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                          ),
-                        ],
+                            const SizedBox(height: 16),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomAutocomplete(
+                                    label: 'Job Category',
+                                    hint: 'e.g. Engineering',
+                                    options: _jobCategories,
+                                    controller: _jobCategoryController,
+
+                                    validator: (val) =>
+                                        Validators.requiredField(
+                                          val,
+                                          'Job Category',
+                                        ),
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: CustomAutocomplete(
+                                    label: 'Job Title',
+                                    hint: 'e.g. Flutter Dev',
+                                    options: _jobTitles,
+                                    controller: _jobTitleController,
+
+                                    validator: (val) =>
+                                        Validators.requiredField(
+                                          val,
+                                          'Job Title',
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomDropdown(
+                                    label: 'Level',
+                                    hint: 'Select Level',
+                                    items: _levels,
+                                    value: _selectedLevel,
+
+                                    onChanged: (val) =>
+                                        setState(() => _selectedLevel = val),
+                                    validator: (val) =>
+                                        Validators.requiredField(val, 'Level'),
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: CustomDropdown(
+                                    label: 'Work Type',
+                                    hint: 'Select Type',
+                                    items: _workTypes,
+                                    value: _selectedWorkType,
+
+                                    onChanged: (val) =>
+                                        setState(() => _selectedWorkType = val),
+                                    validator: (val) =>
+                                        Validators.requiredField(
+                                          val,
+                                          'Work Type',
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            CustomTextField(
+                              label: 'WhatsApp Number',
+                              hint: 'e.g. +1234567890',
+                              controller: _whatsappController,
+                              keyboardType: TextInputType.phone,
+
+                              validator: Validators.phone,
+                            ),
+                            const SizedBox(height: 16),
+                            CustomTextField(
+                              label: 'LinkedIn Profile',
+                              hint: 'https://linkedin.com/in/...',
+                              controller: _linkedinController,
+                              keyboardType: TextInputType.url,
+
+                              validator: (val) =>
+                                  Validators.url(val, 'LinkedIn'),
+                            ),
+                            const SizedBox(height: 16),
+                            CustomTextField(
+                              label: 'GitHub Profile',
+                              hint: 'https://github.com/...',
+                              controller: _githubController,
+                              keyboardType: TextInputType.url,
+
+                              validator: (val) => Validators.url(val, 'GitHub'),
+                            ),
+                            const SizedBox(height: 24),
+                            FileUploadButton(
+                              title: 'Upload Profile Picture (Optional)',
+                              fileName: _avatarFileName,
+                              icon: Icons.image,
+                              onTap: _pickAvatar,
+                            ),
+                            const SizedBox(height: 16),
+                            FileUploadButton(
+                              title: 'Upload CV (PDF) *',
+                              fileName: _cvFileName,
+                              icon: Icons.picture_as_pdf,
+                              onTap: _pickCV,
+                            ),
+                            const SizedBox(height: 32),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 20,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              onPressed: state is manager_state.FormLoading
+                                  ? null
+                                  : _submit,
+                              child: const Text(
+                                'Submit & Register',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            if (state is manager_state.FormLoading)
+              if (state is manager_state.FormLoading)
                 Container(
                   color: Colors.black.withValues(alpha: 0.3),
                   child: const Center(
