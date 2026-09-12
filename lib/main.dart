@@ -8,14 +8,7 @@ import 'features/form/presentation/screens/form_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Supabase.
-  // IMPORTANT: Replace with actual URL and Anon Key when running.
-  // We use placeholder values here to ensure the app compiles.
-  await Supabase.initialize(
-    url: "https://auoloqdhytirfnvazyft.supabase.co",
-    anonKey:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1b2xvcWRoeXRpcmZudmF6eWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3NzcwMTIsImV4cCI6MjA4OTM1MzAxMn0.5EqbLv8XeRm65LA8KKpo5SwYGZ3nd5X49ZsX2rRHCc8",
-  );
+  await Supabase.initialize(url: "##############", anonKey: "##############");
 
   setupServiceLocator();
 
