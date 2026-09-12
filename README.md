@@ -4,7 +4,6 @@ A dynamic, responsive, and robust data collection web application built with Flu
 
 **🔗 [Live Form](https://joby-early-access.netlify.app)** | **🔗 [App Website](https://joby-site.vercel.app/)**
 
-![Joby Web Preview](image_link)
 
 ## Overview
 
